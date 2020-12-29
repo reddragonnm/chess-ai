@@ -41,7 +41,10 @@ function setup() {
   winnerP = createElement('h1', '');
 
   let undoB = createButton('Undo Move');
-  undoB.mousePressed(chess.undo);
+  undoB.mousePressed(() => {
+    chess.undo();
+    chess.undo()
+  });
 
 
   createP('Depth: ');
@@ -65,7 +68,7 @@ function draw() {
     noLoop();
   }
 
-  if (chess.turn() == 'b' && frameRate % 5 == 0) {
+  if (chess.turn() == 'b' && frameCount % 20 == 0) {
     aiMove();
   }
 }
