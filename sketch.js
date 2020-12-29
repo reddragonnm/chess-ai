@@ -64,6 +64,10 @@ function draw() {
     winnerP.html(winner);
     noLoop();
   }
+
+  if (chess.turn() == 'b' && frameRate % 5 == 0) {
+    aiMove();
+  }
 }
 
 function mousePressed() {
@@ -86,20 +90,21 @@ function mouseReleased() {
     for (let move of moves) {
       if (move.to == to_san(j, i)) {
         chess.move(move.san);
-
-        if (chess.in_checkmate()) winner = 'Checkmate by ' + (chess.turn() == 'w' ? 'black' : 'white') + '!';
-        if (chess.in_draw()) winner = 'Draw!';
-        if (chess.in_stalemate()) winner = 'Draw by stalemate!';
-        if (chess.in_threefold_repetition()) winner = 'Draw by threefold repetition!';
-        if (chess.insufficient_material()) winner = 'Draw by insufficient material!';
-
-        aiMove();
+        checkWinner();
         break;
       }
     }
   }
 
   pickedPiece = null;
+}
+
+function checkWinner() {
+  if (chess.in_checkmate()) winner = 'Checkmate by ' + (chess.turn() == 'w' ? 'black' : 'white') + '!';
+  if (chess.in_draw()) winner = 'Draw!';
+  if (chess.in_stalemate()) winner = 'Draw by stalemate!';
+  if (chess.in_threefold_repetition()) winner = 'Draw by threefold repetition!';
+  if (chess.insufficient_material()) winner = 'Draw by insufficient material!';
 }
 
 function showMoves() {
