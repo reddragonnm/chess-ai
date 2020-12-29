@@ -28,17 +28,31 @@ function preload() {
   black_queen = loadImage("assets/black_queen.png");
 }
 
-const tilesize = 70;
+const tilesize = 60;
 const chess = new Chess();
 
 let winner = '';
+let winnerP;
 let pickedPiece;
 
 function setup() {
   createCanvas(tilesize * 8, tilesize * 8);
 
+  winnerP = createElement('h1', '');
+
   let undoB = createButton('Undo Move');
   undoB.mousePressed(chess.undo);
+
+
+  createP('Depth: ');
+  depthSel = createSelect();
+  for (let i = 1; i < 5; i++) {
+    depthSel.option(i);
+  }
+  depthSel.selected(maxDepth);
+  depthSel.changed(() => {
+    maxDepth = depthSel.value;
+  })
 }
 
 function draw() {
@@ -47,7 +61,7 @@ function draw() {
   showMoves();
 
   if (winner != '') {
-    console.log(winner);
+    winnerP.html(winner);
     noLoop();
   }
 }
