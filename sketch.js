@@ -28,7 +28,7 @@ function preload() {
   black_queen = loadImage("assets/black_queen.png");
 }
 
-const tilesize = 60;
+const tilesize = 55;
 const chess = new Chess();
 
 let winner = '';
@@ -68,7 +68,7 @@ function draw() {
     noLoop();
   }
 
-  if (chess.turn() == 'b' && frameCount % 20 == 0) {
+  if (chess.turn() == 'b' && frameCount % 50 == 0) {
     aiMove();
   }
 }

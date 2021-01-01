@@ -4,7 +4,8 @@ let scores = {
   lose: 100,
   tie: 0
 }
-let moveLimit = 15;
+
+let moveLimit = 20;
 
 function aiMove() {
   let bestScore = -Infinity;

@@ -29,9 +29,16 @@ p {
 
 button {
   padding: 10px;
-  font-size: 15px;
-  font-weight: 600;
-  border-radius: 20px;
+  font-size: 20px;
+  font-style: Helvetica;
+  font-weight: bold;
+  color: white;
+  border-radius: 22px;
+  background-color: coral;
+}
+
+button:hover {
+  background-color: red;
 }
 
 select {
@@ -40,5 +47,5 @@ select {
 }
 
 body {
-  background-color: #262526;
+  background-color: palegreen;
 }
